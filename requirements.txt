@@ -1,0 +1,7 @@
+fastapi==0.115.11
+marshmallow==3.26.1
+marshmallow-sqlalchemy==1.4.1
+psycopg2-binary==2.9.10
+SQLAlchemy==2.0.38
+typing_extensions==4.12.2
+uvicorn==0.34.0
