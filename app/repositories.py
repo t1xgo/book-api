@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from app.models import Book
 
+
 class BookRepository:
     def __init__(self, db: Session):
         self.db = db
@@ -16,7 +17,7 @@ class BookRepository:
         self.db.commit()
         self.db.refresh(book)
         return book
-    
+
     def update(self, book: Book):
         self.db.merge(book)
         self.db.commit()
@@ -28,3 +29,4 @@ class BookRepository:
         if book:
             self.db.delete(book)
             self.db.commit()
+        return book

@@ -1,13 +1,17 @@
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
-from marshmallow import fields
-from app.models import Book
+from pydantic import BaseModel
 
-class BookSchema(SQLAlchemyAutoSchema):
-    class Meta:
-        model = Book
-        load_instance = True
+class BookCreateRequest(BaseModel):
+    title: str
+    author: str
+    read: bool = False
 
-class BookUpdateSchema(BookSchema):
-    title = fields.Str(required=True)
-    author = fields.Str(required=True)
-    read = fields.Bool()
+class BookUpdateRequest(BaseModel):
+    title: str | None = None
+    author: str | None = None
+    read: bool | None = None
+
+class BookResponse(BaseModel):
+    id: str
+    title: str
+    author: str
+    read: bool
