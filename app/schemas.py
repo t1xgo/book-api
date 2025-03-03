@@ -15,3 +15,6 @@ class BookResponse(BaseModel):
     title: str
     author: str
     read: bool
+    
+    class ConfigDict:
+        from_attributes = True

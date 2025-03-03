@@ -40,6 +40,6 @@ def delete_book(book_id: str, db: Session = Depends(get_db)):
     service = BookService(BookRepository(db))
     if not service.get_book(book_id):
         raise HTTPException(status_code=404, detail="Book not found")
-    service.delete_book(book_id)    
     
+    service.delete_book(book_id)    
     return {"message": "Book deleted"}
