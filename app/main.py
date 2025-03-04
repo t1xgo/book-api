@@ -35,6 +35,7 @@ def create_book(book: BookCreateRequest, db: Session = Depends(get_db)):
 
 @app.put("/books/{book_id}", response_model=BookResponse, tags=["Books"])
 def update_book(book_id: str, book: BookUpdateRequest, db: Session = Depends(get_db)):
+    book_id = book_id.strip()
     service = BookService(BookRepository(db))
     updated_book = service.update_book(book_id, book)
     
@@ -45,6 +46,7 @@ def update_book(book_id: str, book: BookUpdateRequest, db: Session = Depends(get
 
 @app.delete("/books/{book_id}", tags=["Books"])
 def delete_book(book_id: str, db: Session = Depends(get_db)):
+    book_id = book_id.strip()
     service = BookService(BookRepository(db))
     if not service.get_book(book_id):
         raise HTTPException(status_code=404, detail="Book not found")
