@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from app.database import get_db, create_tables
 from app.schemas import BookCreateRequest, BookUpdateRequest, BookResponse
@@ -11,6 +12,13 @@ app = FastAPI(
     version="1.0.0",
     contact={"name": "Santiago Cano"},
     openapi_tags=[{"name": "Books", "description": "Books management"}]
+)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 create_tables()
