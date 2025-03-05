@@ -1,88 +1,129 @@
-# 📚 FastAPI Book Management API
+#  Book Management
 
-## 🚀 Project Overview
-This project is a simple and efficient REST API built with FastAPI to keep track of books. You can add new books, look them up, update their details, or remove them when you no longer need them.
+## Overview  
 
-## 🛠 Tech Stack
-- **FastAPI** (Web Framework)
-- **SQLAlchemy** (ORM)
-- **Pydantic** (Validation)
-- **PostgreSQL** (Database)
-- **Docker & Docker Compose** (Containerization)
-- **Pytest** (Testing)
-- **testcontainers** (Database Testing)
+This project is a **full-stack book management system** that includes:  
+
+- **Frontend**: An Angular application for managing books.  
+- **Backend**: A FastAPI-based REST API for book storage and management.  
+- **PostgreSQL**: A database for persistent book storage.  
+
+Both services are containerized and can be easily deployed using **Docker Compose**.  
 
 ---
-## 🔧 Installation & Setup
 
-### 1️⃣ Clone the repository
-```sh
- git clone https://github.com/t1xgo/book-api.git
- cd book-api
-```
+## 🛠 Tech Stack  
 
-### 2️⃣ Create & activate a virtual environment (optional but recommended)
-```sh
-python -m venv venv
-source venv/bin/activate  # On Mac/Linux
-venv\Scripts\activate    # On Windows
-```
+### 🔹 Frontend  
 
-### 3️⃣ Install dependencies
-```sh
-pip install -r requirements.txt
-```
+- **Angular** (Frontend Framework)  
+- **TypeScript** (Programming Language)  
+- **Ng-Zorro Ant Design** (UI Components)  
 
-### 4️⃣ Set up environment variables
-Create a **.env** file in the root directory and define your database credentials like this:
-```ini
-DATABASE_URL=postgresql://user:password@localhost:5432/book_db
-```
+### 🔹 Backend  
 
-### 5️⃣ Run the application
-```sh
-uvicorn app.main:app --reload
-```
-- The API will be available at **`http://127.0.0.1:8000`**
-- Open **Swagger UI**: `http://127.0.0.1:8000/docs`
+- **FastAPI** (Web Framework)  
+- **SQLAlchemy** (ORM)  
+- **Pydantic** (Validation)  
+- **PostgreSQL** (Database)  
+- **Pytest** & **Testcontainers** (Testing)
+
+### 🔹 Database
+
+- **AWS RDS**
+
+### 🔹 DevOps  
+
+- **Docker & Docker Compose** (Containerization)  
 
 ---
-## 🐳 Running with Docker
 
-### 1️⃣ Build & Run the containers
+## Features  
+
+✔️ View a list of books  
+✔️ Add new books  
+✔️ Edit existing books  
+✔️ Delete books  
+✔️ Mark books as read/unread  
+
+---
+
+## 🐳 Running with Docker Compose  
+
+### 1️. Clone the repository  
+```sh
+git clone https://github.com/t1xgo/book-app.git
+cd book-app
+```
+
+### 2️. Run the application  
 ```sh
 docker-compose up --build
 ```
+- The **frontend** will be available at: **`http://localhost:4200`**  
+- The **backend API** will be available at: **`http://localhost:8000`**  
+- Open **Swagger UI** for API documentation: **`http://localhost:8000/docs`**  
 
-### 2️⃣ Stop the containers
+### 3️. Stop the application  
 ```sh
 docker-compose down
 ```
 
 ---
-## 📖 API Endpoints
 
-### 📌 Books Endpoints
-| Method | Endpoint          | Description |
-|--------|------------------|-------------|
-| GET    | `/books`         | Get all books |
+## 🛠 Running Locally Without Docker  
+
+### 🔹 Backend (FastAPI)  
+```sh
+cd book-api
+python -m venv venv  # Create virtual environment
+source venv/bin/activate  # Activate venv (Mac/Linux)
+venv\Scripts\activate  # Activate venv (Windows)
+pip install -r requirements.txt  # Install dependencies
+uvicorn app.main:app --reload  # Start API
+```
+API available at: **`http://127.0.0.1:8000`**  
+
+### 🔹 Frontend (Angular)  
+```sh
+cd book-client
+npm install  # Install dependencies
+ng serve  # Start frontend
+```
+Frontend available at: **`http://localhost:4200`**  
+
+---
+
+## 📖 API Endpoints  
+
+| Method | Endpoint         | Description |
+|--------|-----------------|-------------|
+| GET    | `/books`        | Get all books |
 | POST   | `/books`        | Create a new book |
 | PUT    | `/books/{id}`   | Update a book |
 | DELETE | `/books/{id}`   | Delete a book |
+| GET    | `/health`       | Get app status  |
 
 ---
-## ✅ Running Tests
 
-### 1️⃣ Run Unit Tests
+## ✅ Running Tests  
+
+### 🔹 Backend Tests  
 ```sh
-pytest tests/unit
+cd book-api
+pytest tests
 ```
 
-### 2️⃣ Run Integration Tests
-```sh
-pytest tests/integration
-```
+### 🔹 Postman Tests integration
+![Image](https://github.com/user-attachments/assets/5755fdec-c803-4b6a-a713-e215bb89a667)
+
+![Image](https://github.com/user-attachments/assets/a3857caf-16b0-49bc-b7b9-e5938f20ed26)
+
+You can import the collection and environment variables of postman if you want to test it by yourself,
+It will be in a folder called Postman.zip.
+
 ---
-### ✨ Author
-- **Santiago Cano**
+
+### ✨ Author  
+- **Santiago Cano**  
 
