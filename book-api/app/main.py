@@ -23,6 +23,10 @@ app.add_middleware(
 
 create_tables()
 
+@app.get("/health", tags=["Health"])
+async def health_check():
+    return {"status": "API is healthy"}
+
 @app.get("/books", response_model=list[BookResponse], tags=["Books"])
 def get_books(db: Session = Depends(get_db)):
     service = BookService(BookRepository(db))
